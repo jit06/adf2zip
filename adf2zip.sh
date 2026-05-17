@@ -7,7 +7,7 @@
 # and repackages everything into a single flat ZIP file.
 # ==============================================================================
 
-set -euo pipefail
+#set -euo pipefail
 
 # --- Default values ---
 OUTPUT_DIR="$(pwd)"
