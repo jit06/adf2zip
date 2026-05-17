@@ -1,4 +1,4 @@
-# Adf2Zip : Amiga ADF to Zip Converter (for Emu68 Bootstrap)
+# Amiga ADF to Zip Converter (for Emu68 Bootstrap)
 
 A powerful Bash script designed to automate the extraction, reconstruction, and repackaging of Commodore Amiga applications and disk images (`.adf` or `.zip` containing ADFs) into clean, ready-to-use `.zip` archives. 
 
@@ -63,19 +63,12 @@ Example to build all archives ready to be installed with Emu68-bootstrap
 
 ## How it works
 
-[ Input: ADF / URL ] 
-         │
-         ▼
-[ Download & Extract ADF Structure ]
-         │
-         ▼
-[ Extract Nested .lha into dedicated subfolders ]
-         │
-         ▼
-[ Scan entire workspace for .part1, .part2... ] ──► [ Chronologically 'cat' (Join) parts ]
-         │
-         ▼
-[ Cache Flush / File Sync ]
-         │
-         ▼
-[ Pack everything into the final .zip file ] ──► [ Clean up /tmp sandbox ]
+```mermaid
+graph TD
+    A[Input: ADF or URL] --> B[Download & Extract ADF Structure]
+    B --> C[Extract Nested .lha into dedicated subfolders]
+    C --> D[Scan workspace for .part1, .part2...]
+    D --> E[Chronologically 'cat' / Join parts]
+    E --> F[Cache Flush & File Sync]
+    F --> G[Pack into an optimized absolute .zip]
+    G --> H[Clean up /tmp sandbox]
